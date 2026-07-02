@@ -48,16 +48,18 @@ export default function FeaturedProducts() {
     <section id="products" className="py-24 lg:py-32 relative">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent dark:via-accent/[0.02] -z-10" />
+      <div className="hidden dark:block absolute top-1/4 -left-20 w-[400px] h-[400px] bg-primary/6 rounded-full blur-[100px] -z-10" />
+      <div className="hidden dark:block absolute bottom-1/4 -right-20 w-[350px] h-[350px] bg-accent/5 rounded-full blur-[100px] -z-10" />
 
       <div className="max-w-7xl mx-auto px-6">
         <ScrollReveal>
           <div className="text-center max-w-2xl mx-auto mb-16 lg:mb-20">
-            <span className="inline-block text-sm font-semibold text-secondary dark:text-accent uppercase tracking-widest mb-4">
+            <span className="inline-block text-sm font-semibold text-secondary dark:text-accent/80 uppercase tracking-widest mb-4">
               Our Collection
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-[family-name:var(--font-heading)] text-text dark:text-white mb-6">
               Featured{" "}
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-secondary dark:from-accent dark:to-secondary bg-clip-text text-transparent">
                 Products
               </span>
             </h2>
@@ -75,11 +77,13 @@ export default function FeaturedProducts() {
               delay={index * 0.15}
               direction={index === 0 ? "left" : "right"}
             >
-              <div className="group relative h-full glass-card rounded-[var(--radius-xl)] overflow-hidden hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500">
+              <div className="group relative h-full glass-card rounded-[var(--radius-xl)] overflow-hidden hover:shadow-2xl hover:shadow-primary/10 dark:hover:shadow-accent/5 transition-all duration-500 dark:hover:border-accent/20">
                 {/* Badge */}
                 <div
                   className={`absolute top-6 left-6 z-10 px-3 py-1.5 rounded-full text-xs font-bold text-white ${
-                    product.accent === "primary" ? "bg-primary" : "bg-earth"
+                    product.accent === "primary"
+                      ? "bg-gradient-to-r from-primary to-secondary"
+                      : "bg-gradient-to-r from-earth to-earth-light"
                   }`}
                 >
                   {product.badge}
@@ -93,17 +97,17 @@ export default function FeaturedProducts() {
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent dark:from-[#1a2a1e]/80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent dark:from-[#0d1710]/90 dark:via-[#0d1710]/20" />
                 </div>
 
                 {/* Content */}
                 <div className="p-8">
                   <div className="flex items-start justify-between mb-4">
                     <div>
-                      <h3 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-text dark:text-white">
+                      <h3 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-text dark:text-gray-100">
                         {product.name}
                       </h3>
-                      <p className="text-text-muted dark:text-gray-400 text-sm mt-2 leading-relaxed">
+                      <p className="text-text-muted dark:text-gray-300 text-sm mt-2 leading-relaxed">
                         {product.description}
                       </p>
                     </div>
@@ -127,19 +131,25 @@ export default function FeaturedProducts() {
                     <p className="text-xs font-semibold text-text-muted dark:text-gray-500 uppercase tracking-wider mb-3">
                       Includes
                     </p>
-                    <div className="space-y-2">
+                    <div className="space-y-2.5">
                       {product.includes.map((item) => (
                         <div
                           key={item}
-                          className="flex items-center gap-2 text-sm text-text dark:text-gray-300"
+                          className="flex items-center gap-2.5 text-sm text-text dark:text-gray-200"
                         >
-                          <Check
-                            className={`w-4 h-4 flex-shrink-0 ${
-                              product.accent === "primary"
-                                ? "text-primary dark:text-accent"
-                                : "text-earth dark:text-earth-light"
-                            }`}
-                          />
+                          <div className={`w-5 h-5 rounded-full flex items-center justify-center ${
+                            product.accent === "primary"
+                              ? "bg-primary/10 dark:bg-accent/10"
+                              : "bg-earth/10 dark:bg-earth-light/10"
+                          }`}>
+                            <Check
+                              className={`w-3 h-3 flex-shrink-0 ${
+                                product.accent === "primary"
+                                  ? "text-primary dark:text-accent"
+                                  : "text-earth dark:text-earth-light"
+                              }`}
+                            />
+                          </div>
                           {item}
                         </div>
                       ))}
@@ -150,8 +160,8 @@ export default function FeaturedProducts() {
                   <button
                     className={`w-full inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-95 text-base text-white ${
                       product.accent === "primary"
-                        ? "bg-primary hover:bg-primary-dark hover:shadow-primary/25"
-                        : "bg-earth hover:bg-earth-light hover:shadow-earth/25"
+                        ? "bg-gradient-to-r from-primary to-primary-dark dark:from-accent dark:to-secondary dark:text-primary-dark hover:shadow-primary/25 dark:hover:shadow-accent/20"
+                        : "bg-gradient-to-r from-earth to-earth-light hover:shadow-earth/25"
                     }`}
                   >
                     <product.ctaIcon className="w-5 h-5" />

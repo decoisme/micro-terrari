@@ -45,19 +45,26 @@ const galleryItems = [
 export default function Gallery() {
   return (
     <section id="gallery" className="py-24 lg:py-32 relative">
+      {/* Section divider */}
+      <div className="section-divider mb-24" />
+
+      {/* Background blobs */}
+      <div className="hidden dark:block absolute top-1/3 -right-20 w-[400px] h-[400px] bg-primary/6 rounded-full blur-[100px] -z-10" />
+      <div className="hidden dark:block absolute bottom-1/3 -left-20 w-[350px] h-[350px] bg-accent/4 rounded-full blur-[100px] -z-10" />
+
       <div className="max-w-7xl mx-auto px-6">
         <ScrollReveal>
           <div className="text-center max-w-2xl mx-auto mb-16 lg:mb-20">
-            <span className="inline-block text-sm font-semibold text-secondary dark:text-accent uppercase tracking-widest mb-4">
+            <span className="inline-block text-sm font-semibold text-secondary dark:text-accent/80 uppercase tracking-widest mb-4">
               Visual Stories
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-[family-name:var(--font-heading)] text-text dark:text-white mb-6">
               Product{" "}
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-secondary dark:from-accent dark:to-secondary bg-clip-text text-transparent">
                 Gallery
               </span>
             </h2>
-            <p className="text-text-muted dark:text-gray-400 text-lg leading-relaxed">
+            <p className="text-text-muted dark:text-gray-300 text-lg leading-relaxed">
               Explore our terrariums in real-world settings. Every piece tells a
               story of nature, craftsmanship, and calm.
             </p>
@@ -79,10 +86,12 @@ export default function Gallery() {
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 25vw"
                 />
+                {/* Dark mode subtle vignette */}
+                <div className="hidden dark:block absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60" />
                 {/* Overlay */}
-                <div className="gallery-overlay absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/20 to-transparent opacity-0 transition-opacity duration-500 flex items-end p-6">
+                <div className="gallery-overlay absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/30 to-transparent dark:from-black/80 dark:via-primary/30 dark:to-transparent opacity-0 transition-opacity duration-500 flex items-end p-6">
                   <div>
-                    <span className="text-white/70 text-xs font-medium uppercase tracking-wider">
+                    <span className="text-white/60 text-xs font-medium uppercase tracking-wider">
                       MicroTerrari
                     </span>
                     <h4 className="text-white text-lg font-bold font-[family-name:var(--font-heading)]">

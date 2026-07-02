@@ -46,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} ${inter.variable} antialiased`} suppressHydrationWarning>
+    <html lang="en" className={`${poppins.variable} ${inter.variable} antialiased dark`} suppressHydrationWarning>
       <head>
         <meta name="theme-color" content="#355E3B" />
         <link rel="icon" href="/favicon.ico" />
